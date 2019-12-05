@@ -20,8 +20,8 @@ namespace Equation
 
         public Equation(double left, double right)
         {
-            left = Left;
-            right = Right;
+            Left = left;
+            Right = right;
         }
 
         public double Add()

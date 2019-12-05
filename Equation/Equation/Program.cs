@@ -10,46 +10,61 @@ namespace Equation
     {
         static void Main(string[] args)
         {
-            Equation equation1 = new Equation();
+            string anotherCalc;
+            int operation;
             double result = 0;
+            List<string> equations = new List<string>();
 
-            Console.WriteLine("Please enter a number for left.");
-            equation1.Left = Convert.ToDouble(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Please enter a number for left.");
+                double Left = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Please enter a number for right.");
-            equation1.Right = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Please enter a number for right.");
+                double Right = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Would you like to add, subtract, multiply, left to the power of right, or right to the power of left? (1,2,3,4,5)");
-            int operation = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Would you like to add, subtract, multiply, left to the power of right, or right to the power of left? (1,2,3,4,5)");
+                operation = Convert.ToInt32(Console.ReadLine());
 
-            if (operation == 1)
-            {
-                result = equation1.Add();
-            }
-            else if (operation == 2)
-            {
-                result = equation1.Subtract();
-            }
-            else if (operation == 3)
-            {
-                result = equation1.Multiply();
-            }
-            else if (operation == 4)
-            {
-                int power;
-                Console.WriteLine("What do you want the power to be?");
-                power = Convert.ToInt32(Console.ReadLine());
-                result = equation1.LeftToThePower(power);
-            }
-            else if (operation == 5)
-            {
-                int power;
-                Console.WriteLine("What do you want the power to be?");
-                power = Convert.ToInt32(Console.ReadLine());
-                result = equation1.RightToThePower(power);
-            }
+                Equation equation1 = new Equation();
 
-            Console.WriteLine(result.ToString());
+                if (operation == 1)
+                {
+                    result = equation1.Add();
+                }
+                else if (operation == 2)
+                {
+                    result = equation1.Subtract();
+                }
+                else if (operation == 3)
+                {
+                    result = equation1.Multiply();
+                }
+                else if (operation == 4)
+                {
+                    int power;
+                    Console.WriteLine("What do you want the power to be?");
+                    power = Convert.ToInt32(Console.ReadLine());
+                    result = equation1.LeftToThePower(power);
+                }
+                else if (operation == 5)
+                {
+                    int power;
+                    Console.WriteLine("What do you want the power to be?");
+                    power = Convert.ToInt32(Console.ReadLine());
+                    result = equation1.RightToThePower(power);
+                }
+                Console.WriteLine($"{Left} {operation} {Right} = {result}");
+                equations.Add($"{Left} {operation} {Right} = {result}");
+                Console.WriteLine("Would you like to do another equation? (Y/N)");
+                anotherCalc = Console.ReadLine().ToUpper();
+
+            } while (anotherCalc == "Y");
+
+            foreach (var calculation in equations)
+            {
+                Console.WriteLine(calculation);
+            }
             Console.ReadKey();
         }
     }
