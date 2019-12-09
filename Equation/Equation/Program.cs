@@ -11,7 +11,7 @@ namespace Equation
         static void Main(string[] args)
         {
             string anotherCalc;
-            int operation;
+            string operation;
             double result = 0;
             List<string> equations = new List<string>();
 
@@ -23,31 +23,31 @@ namespace Equation
                 Console.WriteLine("Please enter a number for right.");
                 double Right = Convert.ToDouble(Console.ReadLine());
 
-                Console.WriteLine("Would you like to add, subtract, multiply, left to the power of right, or right to the power of left? (1,2,3,4,5)");
-                operation = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Would you like to add, subtract, multiply, left to the power of right, or right to the power of left? (+,-,*,^L,^R)");
+                operation = Console.ReadLine();
 
                 Equation equation1 = new Equation();
 
-                if (operation == 1)
+                if (operation == "+")
                 {
                     result = equation1.Add();
                 }
-                else if (operation == 2)
+                else if (operation == "-")
                 {
                     result = equation1.Subtract();
                 }
-                else if (operation == 3)
+                else if (operation == "*")
                 {
                     result = equation1.Multiply();
                 }
-                else if (operation == 4)
+                else if (operation == "^L")
                 {
                     int power;
                     Console.WriteLine("What do you want the power to be?");
                     power = Convert.ToInt32(Console.ReadLine());
                     result = equation1.LeftToThePower(power);
                 }
-                else if (operation == 5)
+                else if (operation == "^R")
                 {
                     int power;
                     Console.WriteLine("What do you want the power to be?");
